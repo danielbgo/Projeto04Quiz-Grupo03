@@ -1,8 +1,4 @@
-<%-- 
-    Document   : home
-    Created on : 02/11/2018, 13:27:47
-    Author     : Daniel
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
