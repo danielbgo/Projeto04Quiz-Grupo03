@@ -22,14 +22,16 @@
             if (userAnswer.equals(q.getAnswer())){
                 soma++;
             }
+            
         }%>
         <hr><hr>
         <h1>
             Nota: <u><%= 100*((double)(soma)/3.0)%></u> 
         </h1>
        <% } %>
-       <h2>Quiz</h2>
+       
        <form>
+           <fieldset>
            <% for(Question q: Bd.getQuiz()){ %>
            <h3>
                Question: <%= q.getQuestion() %>
@@ -39,7 +41,9 @@
                 <%=q.getAlternatives()[i] %><% } %>
                 <hr>
                 
-           <% } %>     
+           <% } %>
+           </fieldset>
+           <br>
              <input type="submit" name="enviar" value="Enviar"/>
              <a href="home.jsp" role="button">Voltar</a>
        </form>
