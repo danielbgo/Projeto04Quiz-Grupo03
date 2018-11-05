@@ -6,6 +6,7 @@
 package br.com.fatecpg.webquiz;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *teste
@@ -17,6 +18,7 @@ public class Bd {
         quiz.add(new Question ("5+5?", "10", new String[]{"10","30","15"}));
         quiz.add(new Question ("2*1?", "2", new String[]{"1","2","3"}));
         quiz.add(new Question ("5*4?", "20", new String[]{"40","25","20"}));
+        Collections.shuffle(quiz);
         return quiz;
     }
     
