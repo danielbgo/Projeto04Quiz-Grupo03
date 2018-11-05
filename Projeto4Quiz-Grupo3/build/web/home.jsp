@@ -11,7 +11,11 @@
     </head>
     <body>
         <h1>Pagina Inicial</h1>
-        
+        <h3>
+            <a href="quiz.jsp">
+                <button>Realizar teste</button>
+            </a>
+        </h3>
 
     </body>
 </html>
