@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body id="BD" style="background-image: url(Imagens/Quiz.jpg)">
+    <body style="background-image: url(Imagens/Quiz.jpg)">
  
 <div class="jumbotron text-center">
   <h1></h1>
@@ -22,4 +22,9 @@
         </h3>
 </div>
         
+        
+       
+
+   
+    </body>
 </html>

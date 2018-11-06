@@ -19,8 +19,9 @@
     </head>
     <body style="background-image: url(Imagens/Quiz.jpg)">
         <br/><br/>
-        <div class="container-fluid" style="background-color: white">
-        <h1>Quiz</h1>
+        <div class="jumbotron text-center">
+        
+            <center><h1>Quiz</h1></center>
         <% if(request.getParameter("enviar") != null){
         int soma = 0;
         for (Question q: Bd.getQuiz()){
@@ -35,6 +36,8 @@
             Nota: <u><%= 100*((double)(soma)/3.0)%></u> 
         </h1>
        <% } %>
+       
+       
        
        <form>
            <fieldset>
@@ -53,7 +56,10 @@
              <input type="submit" name="enviar" value="Enviar"/>
              <a href="home.jsp" role="button">Voltar</a>
        </form>
-           <br/><br/>
+           <br/>
         </div>
+        </div>
+           
+ 
     </body>
 </html>
