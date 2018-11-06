@@ -48,7 +48,7 @@
                 <% for(int i=0; i<q.getAlternatives().length; i++){ %>
                 <input type="radio" name="<%= q.getQuestion()%>" value="<%= q.getAlternatives()[i] %>">
                 <%=q.getAlternatives()[i] %><% } %>
-                <hr>
+                <hr style="border-color: black">
                 
            <% } %>
            </fieldset>
