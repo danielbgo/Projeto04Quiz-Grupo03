@@ -9,13 +9,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Pagina Inicial</h1>
-        <h3>
+    <body id="BD" style="background-image: url(Imagens/Quiz.jpg)">
+ 
+<div class="jumbotron text-center">
+  <h1></h1>
+           <h3>
+            <center><h1>Pagina Inicial</h1></center><br/>
             <a href="quiz.jsp">
+                
                 <button>Realizar teste</button>
             </a>
         </h3>
-
-    </body>
+</div>
+        
 </html>
