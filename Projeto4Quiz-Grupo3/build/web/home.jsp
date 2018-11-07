@@ -1,5 +1,7 @@
 
-
+<%@page import="br.com.fatecpg.webquiz.Bd"%>
+<%@page import="br.com.fatecpg.webquiz.Question"%>
+<%@page import="br.com.fatecpg.webquiz.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,16 +12,59 @@
         <title>JSP Page</title>
     </head>
     <body style="background-image: url(Imagens/Quiz.jpg)">
- 
+        <%if(request.getParameter("comecar")!=null && request.getParameter("nome")!=""){
+            boolean flag = false;     
+            session.setAttribute("nome", request.getParameter("nome"));
+           for(Usuarios x : Bd.getUser()){
+
+           if(flag == false && request.getParameter("nome").equals(x.getNome())){
+           flag = true;      
+           %> 
+           <%}}
+           if(!flag){
+           Usuarios x = new Usuarios();
+           x.setUser(request.getParameter("nome"),0);
+           Bd.getUser().add(x);
+
+           response.sendRedirect("quiz.jsp");    
+            }
+           else{
+           response.sendRedirect("quiz.jsp");
+           }}%>
 <div class="jumbotron text-center">
   <h1></h1>
            <h3>
             <center><h1>Pagina Inicial</h1></center><br/>
-            <a href="quiz.jsp">
-                
-                <button>Realizar teste</button>
-            </a>
-        </h3>
+                <form><center><div class="entrar">
+                    <h2>Entrar<br><br>
+                    Informe o seu Nome:</h2> 
+                    <input type="text"  placeholder="Nome" name="nome"><br><br>
+                    <input type="submit" name="comecar" value="Realizar teste">
+                    <h1>Top 10</h1> 
+                        <div class="telas">
+                        <table id="customers">
+                     <tr>
+                       <th>Rank </th>  
+                       <th>Nome </th>      
+                       <th>Nota </th>   
+                     </tr>
+                     <tr>
+                       <% 
+                         int cont = 0;
+                         for(Usuarios x : Bd.getUser()){
+                         %>  
+                         <td><%=++cont%></td>
+                         <td><%=x.setUser(request.getParameter("nome"),0)%></td>
+                         <td><%=x.setUser(request.getParameter("nota"),0)%></td></tr>
+                         <%}%>
+
+                       </table>   
+                       </div>
+                        </div>
+            </center>
+                   </form>
+            </h3>
+  
 </div>
         
         

@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="br.com.fatecpg.webquiz.Bd"%>
 <%@page import="br.com.fatecpg.webquiz.Question"%>
+<%@page import="br.com.fatecpg.webquiz.Usuarios"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,18 +23,31 @@
         <div class="jumbotron text-center">
         
             <center><h1>Quiz</h1></center>
-        <% if(request.getParameter("enviar") != null){
-        int soma = 0;
-        for (Question q: Bd.getQuiz()){
-            String userAnswer = request.getParameter(q.getQuestion());
-            if (userAnswer.equals(q.getAnswer())){
-                soma++;
+            <%
+            String usuario = (String)session.getAttribute("nome");
+            for(Usuarios x: Bd.getUser()){
+               
+                if(usuario == x.getNome()){%>
+                    <h1>Boa sorte <%=x.getNome()%></h1><%
+                }
             }
-            
-        }%>
+            if (usuario ==null){
+                response.sendRedirect("home.jsp");
+            }
+            if (request.getParameter("enviar") != null) {
+                int soma = 0;
+                Usuarios user = new Usuarios();
+                for (Question q : Bd.getQuiz()) {
+                    String userAnswer = request.getParameter(q.getQuestion());
+                        if (userAnswer.equals(q.getAnswer())) {
+                            soma++;
+                        }                    
+                }%>
+         
         <hr><hr>
         <h1>
-            Nota: <u><%= 100*((double)(soma)/3.0)%></u> 
+            Nota: <u><%= 100*((double)(soma)/3.0)%></u>
+            
         </h1>
        <% } %>
        
