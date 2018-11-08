@@ -44,7 +44,7 @@
                         if (userAnswer.equals(q.getAnswer())) {
                             soma++;
                         }
-                  nota = (soma/3.0)*10;
+                  nota = (soma/10.0)*10;
                   
                 }Historicos h = new Historicos();
                 
