@@ -1,7 +1,8 @@
 
+<%@page import="br.com.fatecpg.webquiz.Historicos"%>
+<%@page import="br.com.fatecpg.webquiz.Usuarios"%>
 <%@page import="br.com.fatecpg.webquiz.Bd"%>
 <%@page import="br.com.fatecpg.webquiz.Question"%>
-<%@page import="br.com.fatecpg.webquiz.Usuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
         <%if(request.getParameter("comecar")!=null && request.getParameter("nome")!=""){
             boolean flag = false;     
             session.setAttribute("nome", request.getParameter("nome"));
-           for(Usuarios x : Bd.getUser()){
+           for(Usuarios x : Bd.getName()){
 
            if(flag == false && request.getParameter("nome").equals(x.getNome())){
            flag = true;      
@@ -23,8 +24,8 @@
            <%}}
            if(!flag){
            Usuarios x = new Usuarios();
-           x.setUser(request.getParameter("nome"),0);
-           Bd.getUser().add(x);
+           x.setUser(request.getParameter("nome"));
+           Bd.getName().add(x);
 
            response.sendRedirect("quiz.jsp");    
             }
@@ -51,11 +52,11 @@
                      <tr>
                        <% 
                          int cont = 0;
-                         for(Usuarios x : Bd.getUser()){
+                         for(Historicos h : Bd.getUser()){
                          %>  
                          <td><%=++cont%></td>
-                         <td><%=x.getNome()%></td>
-                         <td><%=x.getNota()%></td></tr>
+                         <td><%=h.getNome()%></td>
+                         <td><%=h.getNota()%></td></tr>
                          <%}%>
 
                        </table>   
@@ -65,11 +66,6 @@
                    </form>
             </h3>
   
-</div>
-        
-        
-       
-
-   
+</div>  
     </body>
 </html>

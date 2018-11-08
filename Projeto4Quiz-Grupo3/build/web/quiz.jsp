@@ -4,6 +4,7 @@
     Author     : rafae
 --%>
 
+<%@page import="br.com.fatecpg.webquiz.Historicos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="br.com.fatecpg.webquiz.Bd"%>
 <%@page import="br.com.fatecpg.webquiz.Question"%>
@@ -25,28 +26,31 @@
             <center><h1>Quiz</h1></center>
             <%
             String usuario = (String)session.getAttribute("nome");
-            for(Usuarios x: Bd.getUser()){
+            for(Usuarios x: Bd.getName()){
                
                 if(usuario == x.getNome()){%>
-                    <h1>Boa sorte <%=x.getNome()%></h1><%
+                    <h1>Boa sorte <%=x.getNome()%><%=usuario%></h1><%
                 }
             }
             if (usuario ==null){
                 response.sendRedirect("home.jsp");
             }
             if (request.getParameter("enviar") != null) {
-                int soma = 0;
-                Usuarios user = new Usuarios();
+                double soma = 0;
                 for (Question q : Bd.getQuiz()) {
                     String userAnswer = request.getParameter(q.getQuestion());
                         if (userAnswer.equals(q.getAnswer())) {
                             soma++;
-                        }                    
-                }%>
+                        }
+                        
+                }Historicos h = new Historicos();
+                        h.setUser(usuario, soma);
+                        Bd.getUser().add(h);
+                    %>
          
         <hr><hr>
         <h1>
-            Nota: <u><%= 100*((double)(soma)/3.0)%></u>
+            Nota: <u><%= 100*((double)(soma)/3.0)%>%</u>
             
         </h1>
        <% } %>

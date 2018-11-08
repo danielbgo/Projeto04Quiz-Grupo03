@@ -21,49 +21,58 @@ public class Bd {
         Collections.shuffle(quiz);
         return quiz;
     }
-    private static final ArrayList<Usuarios> user = new ArrayList<>();         
-    public static ArrayList<Usuarios> getUser(){
+    private static final ArrayList<Historicos> hist = new ArrayList<>();         
+    public static ArrayList<Historicos> getUser(){
         
-       if (user.isEmpty()){
-        Usuarios p1 = new Usuarios();
+       if (hist.isEmpty()){
+        Historicos p1 = new Historicos();
         p1.setUser("teste",7.0);
-        user.add(p1);
+        hist.add(p1);
         
-        Usuarios p2 = new Usuarios();
+        
+        Historicos p2 = new Historicos();
         p2.setUser("teste",7.5);
-        user.add(p2);
+        hist.add(p2);
         
-        Usuarios p3 = new Usuarios();
+        Historicos p3 = new Historicos();
         p3.setUser("teste",8.0);
-        user.add(p3);
+        hist.add(p3);
         
-        Usuarios p4 = new Usuarios();
+        Historicos p4 = new Historicos();
         p4.setUser("teste",8.5);
-        user.add(p4);
+        hist.add(p4);
         
         
-        Usuarios p5 = new Usuarios();
+        Historicos p5 = new Historicos();
         p5.setUser("teste",6.0);
-        user.add(p5);
+        hist.add(p5);
         
-       Usuarios p6 = new Usuarios();
+       Historicos p6 = new Historicos();
         p6.setUser("teste",7.0);
-        user.add(p6);
+        hist.add(p6);
         
-       Usuarios p7 = new Usuarios();
+       Historicos p7 = new Historicos();
         p7.setUser("teste",8.0);
-        user.add(p7);
+        hist.add(p7);
         
-        Usuarios p8 = new Usuarios();
+        Historicos p8 = new Historicos();
         p8.setUser("teste",4.0);
-        user.add(p8);
+        hist.add(p8);
         
-        Usuarios p9 = new Usuarios();
+        Historicos p9 = new Historicos();
         p9.setUser("teste",5.0);
-       user.add(p9);        
+       hist.add(p9);        
        }
-      Collections.sort(user, Collections.reverseOrder());
-       return user;
+      Collections.sort(hist, Collections.reverseOrder());
+       return hist;
        }
-    
+    private static final ArrayList<Usuarios> user = new ArrayList<>();         
+    public static ArrayList<Usuarios> getName(){
+        if (user.isEmpty()){
+        Usuarios p1 = new Usuarios();
+        p1.setUser("teste");
+        user.add(p1);
+        }
+        return user;
+    }
 }
