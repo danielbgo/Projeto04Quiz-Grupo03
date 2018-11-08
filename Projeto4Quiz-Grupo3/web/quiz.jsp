@@ -69,7 +69,7 @@
                Question: <%= q.getQuestion() %>
            </h3>
                 <% for(int i=0; i<q.getAlternatives().length; i++){ %>
-                <input type="radio" name="<%= q.getQuestion()%>" value="<%= q.getAlternatives()[i] %>">
+                <input type="radio" name="<%= q.getQuestion()%>" value="<%= q.getAlternatives()[i] %>" required>
                 <%=q.getAlternatives()[i] %><% } %>
                 <hr style="border-color: black">
                 
