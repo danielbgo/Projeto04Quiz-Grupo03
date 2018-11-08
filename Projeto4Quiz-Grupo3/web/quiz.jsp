@@ -30,7 +30,7 @@
             for(Usuarios x: Bd.getName()){
                
                 if(usuario == x.getNome()){%>
-                    <h1>Boa sorte <%=x.getNome()%><%=usuario%></h1><%
+                    <h1>Boa sorte <%=x.getNome()%></h1><%
                 }
             }
             if (usuario ==null){
