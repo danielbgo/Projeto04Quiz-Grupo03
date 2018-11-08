@@ -63,6 +63,12 @@ public class Bd {
         p9.setUser("teste9",5.0);
        hist.add(p9);        
        }
+       while (hist.size() >= 11) {
+            hist.remove(0);
+            
+        //Collections.sort(user, Collections.reverseOrder());
+        }
+        
       //Collections.sort(hist, Collections.reverseOrder());
        return hist;
        }
