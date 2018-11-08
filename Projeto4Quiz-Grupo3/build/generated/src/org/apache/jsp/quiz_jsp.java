@@ -5,11 +5,11 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.text.NumberFormat;
 import br.com.fatecpg.webquiz.Historicos;
-import br.com.fatecpg.webquiz.Usuarios;
 import br.com.fatecpg.webquiz.Bd;
 import br.com.fatecpg.webquiz.Question;
+import br.com.fatecpg.webquiz.Usuarios;
 
-public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class quiz_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -59,9 +59,12 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
+      out.write("       \n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        ");
       out.write("\n");
       out.write("<!-- Latest compiled and minified CSS -->\n");
@@ -104,78 +107,98 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  </div>\n");
       out.write("</nav>");
       out.write("\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
+      out.write("        \n");
+      out.write("        <title>Quiz</title>\n");
       out.write("    </head>\n");
       out.write("    <body style=\"background-image: url(Imagens/Quiz.jpg)\">\n");
-      out.write("        ");
-if(request.getParameter("comecar")!=null && request.getParameter("nome")!=""){
-            boolean flag = false;     
-            session.setAttribute("nome", request.getParameter("nome"));
-           for(Usuarios x : Bd.getName()){
+      out.write("        <br/><br/>\n");
+      out.write("        <div class=\"jumbotron text-center\">\n");
+      out.write("        \n");
+      out.write("            <center><h1>Quiz</h1></center>\n");
+      out.write("            ");
 
-           if(flag == false && request.getParameter("nome").equals(x.getNome())){
-           flag = true;      
-           
-      out.write(" \n");
-      out.write("           ");
-}}
-           if(!flag){
-           Usuarios x = new Usuarios();
-           x.setUser(request.getParameter("nome"));
-           Bd.getName().add(x);
+            String usuario = (String)session.getAttribute("nome");
+            for(Usuarios x: Bd.getName()){
+               
+                if(usuario == x.getNome()){
+      out.write("\n");
+      out.write("                    <h1>Boa sorte ");
+      out.print(x.getNome());
+      out.write("</h1>");
 
-           response.sendRedirect("quiz.jsp");    
+                }
             }
-           else{
-           response.sendRedirect("quiz.jsp");
-           }}
+            if (usuario ==null){
+                response.sendRedirect("home.jsp");
+            }
+            if (request.getParameter("enviar") != null) {
+                double soma = 0;
+                double nota = 0;
+                for (Question q : Bd.getQuiz()) {
+                    String userAnswer = request.getParameter(q.getQuestion());
+                        if (userAnswer.equals(q.getAnswer())) {
+                            soma++;
+                        }
+                  nota = (soma/10.0)*10;
+                  
+                }Historicos h = new Historicos();
+                
+                        h.setUser(usuario,nota);
+                        
+                        Bd.getUser().add(h);
+                    
       out.write("\n");
-      out.write("<div class=\"jumbotron text-center\">\n");
-      out.write("  <h1></h1>\n");
+      out.write("         \n");
+      out.write("        <hr><hr>\n");
+      out.write("        <h1>\n");
+      out.write("            Nota: <u>");
+      out.print(NumberFormat.getIntegerInstance().format(nota));
+      out.write("</u>\n");
+      out.write("            \n");
+      out.write("        </h1>\n");
+      out.write("       ");
+ } 
+      out.write("\n");
+      out.write("       \n");
+      out.write("       \n");
+      out.write("       \n");
+      out.write("       <form>\n");
+      out.write("           <fieldset>\n");
+      out.write("           ");
+ for(Question q: Bd.getQuiz()){ 
+      out.write("\n");
       out.write("           <h3>\n");
-      out.write("            <center><h1>Pagina Inicial</h1></center><br/>\n");
-      out.write("                <form><center><div class=\"entrar\">\n");
-      out.write("                    <h2>Entrar<br><br>\n");
-      out.write("                    Informe o seu Nome:</h2> \n");
-      out.write("                    <input type=\"text\"  placeholder=\"Nome\" name=\"nome\"><br><br>\n");
-      out.write("                    <input type=\"submit\" name=\"comecar\" value=\"Realizar teste\">\n");
-      out.write("                    <h1>Top 10</h1> \n");
-      out.write("                        <div class=\"telas\">\n");
-      out.write("                        <table id=\"customers\">\n");
-      out.write("                     <tr>\n");
-      out.write("                       <th>Rank </th>  \n");
-      out.write("                       <th>Nome </th>      \n");
-      out.write("                       <th>Nota </th>   \n");
-      out.write("                     </tr>\n");
-      out.write("                     <tr>\n");
-      out.write("                       ");
- 
-                         int cont = 0;
-                         for(Historicos h : Bd.getUser()){
-                         
-      out.write("  \n");
-      out.write("                         <td>");
-      out.print(++cont);
-      out.write("</td>\n");
-      out.write("                         <td>");
-      out.print(h.getNome());
-      out.write("</td>\n");
-      out.write("                         <td>");
-      out.print( NumberFormat.getIntegerInstance().format(h.getNota()));
-      out.write("</td></tr>\n");
-      out.write("                         ");
-}
+      out.write("               Question: ");
+      out.print( q.getQuestion() );
       out.write("\n");
+      out.write("           </h3>\n");
+      out.write("                ");
+ for(int i=0; i<q.getAlternatives().length; i++){ 
       out.write("\n");
-      out.write("                       </table>   \n");
-      out.write("                       </div>\n");
-      out.write("                        </div>\n");
-      out.write("            </center>\n");
-      out.write("                   </form>\n");
-      out.write("            </h3>\n");
-      out.write("  \n");
-      out.write("</div>  \n");
+      out.write("                <input type=\"radio\" name=\"");
+      out.print( q.getQuestion());
+      out.write("\" value=\"");
+      out.print( q.getAlternatives()[i] );
+      out.write("\" required>\n");
+      out.write("                ");
+      out.print(q.getAlternatives()[i] );
+ } 
+      out.write("\n");
+      out.write("                <hr style=\"border-color: black\">\n");
+      out.write("                \n");
+      out.write("           ");
+ } 
+      out.write("\n");
+      out.write("           </fieldset>\n");
+      out.write("           <br>\n");
+      out.write("           <input type=\"submit\" class=\"btn btn-primary btn-lg\" name=\"enviar\" value=\"Enviar\"/>\n");
+      out.write("             <a href=\"home.jsp\" role=\"button\">Voltar</a>\n");
+      out.write("       </form>\n");
+      out.write("           <br/>\n");
+      out.write("        </div>\n");
+      out.write("        </div>\n");
+      out.write("           \n");
+      out.write(" \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
