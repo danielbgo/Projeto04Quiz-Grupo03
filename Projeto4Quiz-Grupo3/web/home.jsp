@@ -1,4 +1,5 @@
 
+<%@page import="java.text.NumberFormat"%>
 <%@page import="br.com.fatecpg.webquiz.Historicos"%>
 <%@page import="br.com.fatecpg.webquiz.Usuarios"%>
 <%@page import="br.com.fatecpg.webquiz.Bd"%>
@@ -56,7 +57,7 @@
                          %>  
                          <td><%=++cont%></td>
                          <td><%=h.getNome()%></td>
-                         <td><%=h.getNota()%></td></tr>
+                         <td><%= NumberFormat.getIntegerInstance().format(h.getNota())%></td></tr>
                          <%}%>
 
                        </table>   

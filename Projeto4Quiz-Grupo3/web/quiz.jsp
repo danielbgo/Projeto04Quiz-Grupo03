@@ -4,6 +4,7 @@
     Author     : rafae
 --%>
 
+<%@page import="java.text.NumberFormat"%>
 <%@page import="br.com.fatecpg.webquiz.Historicos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="br.com.fatecpg.webquiz.Bd"%>
@@ -37,20 +38,24 @@
             }
             if (request.getParameter("enviar") != null) {
                 double soma = 0;
+                double nota = 0;
                 for (Question q : Bd.getQuiz()) {
                     String userAnswer = request.getParameter(q.getQuestion());
                         if (userAnswer.equals(q.getAnswer())) {
                             soma++;
                         }
-                        
+                  nota = (soma/3.0)*10;
+                  
                 }Historicos h = new Historicos();
-                        h.setUser(usuario, soma);
+                
+                        h.setUser(usuario,nota);
+                        
                         Bd.getUser().add(h);
                     %>
          
         <hr><hr>
         <h1>
-            Nota: <u><%= 100*((double)(soma)/3.0)%>%</u>
+            Nota: <u><%=NumberFormat.getIntegerInstance().format(nota)%></u>
             
         </h1>
        <% } %>
