@@ -54,8 +54,8 @@
                          for(Usuarios x : Bd.getUser()){
                          %>  
                          <td><%=++cont%></td>
-                         <td><%=x.setUser(request.getParameter("nome"),0)%></td>
-                         <td><%=x.setUser(request.getParameter("nota"),0)%></td></tr>
+                         <td><%=x.getNome()%></td>
+                         <td><%=x.getNota()%></td></tr>
                          <%}%>
 
                        </table>   
