@@ -11,9 +11,9 @@
         <%@include file="WEB-INF/jspf/header.jspf" %>
         <%@include file="WEB-INF/jspf/navbar.jspf" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home</title>
     </head>
-    <body style="background-image: url(Imagens/Quiz.jpg)">
+    <body style="background-image: url(Imagens/gramado.jpg); background-size: 500px" >
         <%if (request.getParameter("comecar") != null && request.getParameter("nome") != "") {
                 boolean flag = false;
                 session.setAttribute("nome", request.getParameter("nome"));
@@ -36,11 +36,16 @@
                }%>
 
         <!--Corpo da Pagina-->
+        <div class="container">
+         <div class="jumbotron">
+                <center> <strong><h2>Olá, seja bem vindo ao nosso Quiz sobre Futebol!</h2></strong>
+                </div>
+                </div>
         <div class="container" style="background-color: white">
+            <br/><br/>
             <h1></h1>
             <h3>
-                <center> <strong><h1>Olá, seja bem vindo ao nosso Quiz!</h1></strong>
-
+               
                     <div class="row text-center slideanim">
                         <div class="col-sm-6">
                              <div class="thumbnail">

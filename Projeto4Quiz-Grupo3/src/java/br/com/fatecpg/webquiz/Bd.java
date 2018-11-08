@@ -15,16 +15,16 @@ import java.util.Collections;
 public class Bd {
     public static ArrayList<Question> getQuiz(){
         ArrayList<Question> quiz = new ArrayList<>();
-        quiz.add(new Question ("5+5?", "10", new String[]{"10","30","15"}));
-        quiz.add(new Question ("2+2?", "4", new String[]{"1","2","4"}));
-        quiz.add(new Question ("5+4?", "9", new String[]{"5","9","10"}));
-        quiz.add(new Question ("5-5?", "0", new String[]{"0","1","2"}));
-        quiz.add(new Question ("30-15?", "15", new String[]{"16","15","17"}));
-        quiz.add(new Question ("22-15?", "7", new String[]{"8","9","7"}));
-        quiz.add(new Question ("5*5?", "25", new String[]{"25","29","20"}));
-        quiz.add(new Question ("2*1?", "2", new String[]{"1","2","3"}));
-        quiz.add(new Question ("10*5?", "50", new String[]{"40","50","60"}));
-        quiz.add(new Question ("10/2?", "5", new String[]{"10","8","5"}));
+        quiz.add(new Question ("Quantas vezes o Palmeiras venceu o Mundial de Clubes FIFA?", "0", new String[]{"3","1","0"}));
+        quiz.add(new Question ("Quem foi o campeão da Copa do Mundo de 2014?", "Alemanha", new String[]{"Alemanha","Brasil","Russia"}));
+        quiz.add(new Question ("Qual desses jogadores marcou mais de Mil gols em sua carreira?", "Pelé", new String[]{"Pelé","Neymar","Messi"}));
+        quiz.add(new Question ("Qual foi o placar do jogo entre Brasil e Alemanha na Copa do Mundo de 2014?", "7x1", new String[]{"0x0","7x1","1x3"}));
+        quiz.add(new Question ("Quantas Copas do Mundo o Brasil venceu?", "5", new String[]{"3","7","5"}));
+        quiz.add(new Question ("Quantos titulos de Melhor do Mundo a jogadora de futebol feminino Marta possui?", "6", new String[]{"6","2","3"}));
+        quiz.add(new Question ("Qual foi o país sede da Copa do Mundo de 2018?", "Russia", new String[]{"Alemanha","Japão","Russia"}));
+        quiz.add(new Question ("Um jogador é expulso de campo ao receber quantos cartões amarelos?", "2", new String[]{"5","1","2"}));
+        quiz.add(new Question ("Em uma partida de futebol cada time possui quantos jogadores em campo?", "11", new String[]{"9","15","11"}));
+        quiz.add(new Question ("Que time brasileiro possui mais Mundiais de Clubes FIFA?", "São Paulo", new String[]{"Palmeiras","Bragantino","São Paulo"}));
         
         Collections.shuffle(quiz);
         return quiz;

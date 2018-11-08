@@ -20,20 +20,25 @@
 
         <title>Quiz</title>
     </head>
-    <body style="background-image: url(Imagens/Quiz.jpg)">
+    <body style="background-image: url(Imagens/gramado.jpg); background-size: 500px">
         <br/><br/>
+         <div class="container">
+         <div class="jumbotron">
+             <center> <strong><h1>Quiz</h1></strong>
+                </div>
+                </div>
         <div class="container" style="background-color: white">
             
             <div class="row text-center slideanim">
            
 
-            <center><h1>Quiz</h1></center>
+          
                 <%
                     String usuario = (String) session.getAttribute("nome");
                     for (Usuarios x : Bd.getName()) {
 
                     if (usuario == x.getNome()) {%>
-            <h1>Boa sorte <%=x.getNome()%></h1><%
+                    <br/><br><h1>Boa sorte <%=x.getNome()%></h1><br/><br/><%
                     }
                 }
                 if (usuario == null) {
@@ -58,12 +63,14 @@
             %>
 
             <hr><hr>
+            <center><div class="thumbnail" style="width: 500px; border-color: red">
             <h1>
-                Nota: <u><%=NumberFormat.getIntegerInstance().format(nota)%></u>
+                Nota do ultimo teste: <u><%=NumberFormat.getIntegerInstance().format(nota)%></u>
 
             </h1>
             <% } %>
-
+            </center>
+            </div>
 
 
             <form><center>

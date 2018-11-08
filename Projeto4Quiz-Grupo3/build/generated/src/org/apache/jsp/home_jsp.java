@@ -105,79 +105,107 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</nav>");
       out.write("\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
+      out.write("        <title>Home</title>\n");
       out.write("    </head>\n");
-      out.write("    <body style=\"background-image: url(Imagens/Quiz.jpg)\">\n");
+      out.write("    <body style=\"background-image: url(Imagens/gramado.jpg); background-size: 500px\" >\n");
       out.write("        ");
-if(request.getParameter("comecar")!=null && request.getParameter("nome")!=""){
-            boolean flag = false;     
-            session.setAttribute("nome", request.getParameter("nome"));
-           for(Usuarios x : Bd.getName()){
+if (request.getParameter("comecar") != null && request.getParameter("nome") != "") {
+                boolean flag = false;
+                session.setAttribute("nome", request.getParameter("nome"));
+                for (Usuarios x : Bd.getName()) {
 
-           if(flag == false && request.getParameter("nome").equals(x.getNome())){
-           flag = true;      
-           
+                    if (flag == false && request.getParameter("nome").equals(x.getNome())) {
+                        flag = true;
+        
       out.write(" \n");
-      out.write("           ");
-}}
-           if(!flag){
-           Usuarios x = new Usuarios();
-           x.setUser(request.getParameter("nome"));
-           Bd.getName().add(x);
+      out.write("        ");
+}
+                }
+                if (!flag) {
+                    Usuarios x = new Usuarios();
+                    x.setUser(request.getParameter("nome"));
+                    Bd.getName().add(x);
 
-           response.sendRedirect("quiz.jsp");    
-            }
-           else{
-           response.sendRedirect("quiz.jsp");
-           }}
+                    response.sendRedirect("quiz.jsp");
+                } else {
+                    response.sendRedirect("quiz.jsp");
+                   }
+               }
       out.write("\n");
-      out.write("<div class=\"jumbotron text-center\">\n");
-      out.write("  <h1></h1>\n");
-      out.write("           <h3>\n");
-      out.write("            <center><h1>Pagina Inicial</h1></center><br/>\n");
-      out.write("                <form><center><div class=\"entrar\">\n");
-      out.write("                    <h2>Entrar<br><br>\n");
-      out.write("                    Informe o seu Nome:</h2> \n");
-      out.write("                    <input type=\"text\"  placeholder=\"Nome\" name=\"nome\"><br><br>\n");
-      out.write("                    <input type=\"submit\" name=\"comecar\" value=\"Realizar teste\">\n");
-      out.write("                    <h1>Top 10</h1> \n");
-      out.write("                        <div class=\"telas\">\n");
-      out.write("                        <table id=\"customers\">\n");
-      out.write("                     <tr>\n");
-      out.write("                       <th>Rank </th>  \n");
-      out.write("                       <th>Nome </th>      \n");
-      out.write("                       <th>Nota </th>   \n");
-      out.write("                     </tr>\n");
-      out.write("                     <tr>\n");
-      out.write("                       ");
+      out.write("\n");
+      out.write("        <!--Corpo da Pagina-->\n");
+      out.write("        <div class=\"container\">\n");
+      out.write("         <div class=\"jumbotron\">\n");
+      out.write("                <center> <strong><h2>Olá, seja bem vindo ao nosso Quiz sobre Futebol!</h2></strong>\n");
+      out.write("                </div>\n");
+      out.write("                </div>\n");
+      out.write("        <div class=\"container\" style=\"background-color: white\">\n");
+      out.write("            <br/><br/>\n");
+      out.write("            <h1></h1>\n");
+      out.write("            <h3>\n");
+      out.write("               \n");
+      out.write("                    <div class=\"row text-center slideanim\">\n");
+      out.write("                        <div class=\"col-sm-6\">\n");
+      out.write("                             <div class=\"thumbnail\">\n");
+      out.write("                                <form><center>\n");
+      out.write("                                            <h2>Entrar<br><br>\n");
+      out.write("                                                Informe o seu Nome:</h2> \n");
+      out.write("                                            <input type=\"text\"  placeholder=\"Nome\" name=\"nome\"><br><br>\n");
+      out.write("                                            <input type=\"submit\" class=\"btn btn-primary btn-lg\" name=\"comecar\" value=\"Realizar teste\">\n");
+      out.write("                                            <br/>\n");
+      out.write("                                            <br/>\n");
+      out.write("                                        </div>\n");
+      out.write("                                        </div>\n");
+      out.write("                        \n");
+      out.write("                        \n");
+      out.write("                        <div class=\"col-sm-6 text-center\">\n");
+      out.write("                            <div class=\"thumbnail\">\n");
+      out.write("                                        <h1>Top 10</h1> \n");
+      out.write("                                        \n");
+      out.write("                                        <center><table id=\"customers\">\n");
+      out.write("                                                <tr>\n");
+      out.write("                                                    <th>Rank </th>  \n");
+      out.write("                                                    <th>Nome </th>      \n");
+      out.write("                                                    <th>Nota </th>   \n");
+      out.write("                                                </tr>\n");
+      out.write("                                                <tr>\n");
+      out.write("                                                    ");
  
-                         int cont = 0;
-                         for(Historicos h : Bd.getUser()){
-                         
+                                                      int cont = 0;
+                                                      for(Historicos h : Bd.getUser()){
+                                                    
       out.write("  \n");
-      out.write("                         <td>");
+      out.write("                                                    <td>");
       out.print(++cont);
       out.write("</td>\n");
-      out.write("                         <td>");
+      out.write("                                                    <td>");
       out.print(h.getNome());
       out.write("</td>\n");
-      out.write("                         <td>");
+      out.write("                                                    <td>");
       out.print( NumberFormat.getIntegerInstance().format(h.getNota()));
       out.write("</td></tr>\n");
-      out.write("                         ");
+      out.write("                                                    ");
 }
       out.write("\n");
       out.write("\n");
-      out.write("                       </table>   \n");
-      out.write("                       </div>\n");
-      out.write("                        </div>\n");
-      out.write("            </center>\n");
-      out.write("                   </form>\n");
-      out.write("            </h3>\n");
+      out.write("                                            </table>   \n");
+      out.write("                                        </center>\n");
+      out.write("                                        </div>\n");
+      out.write("                                        </div>\n");
+      out.write("                                        </div>\n");
+      out.write("                                        \n");
+      out.write("                                    </center>\n");
+      out.write("                                </form>\n");
+      out.write("\n");
+      out.write("                            </div>\n");
       out.write("  \n");
-      out.write("</div>  \n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("                            </h3>\n");
+      out.write("\n");
+      out.write("                        </div> \n");
+      out.write("                        <br/>\n");
+      out.write("                        <br/>\n");
+      out.write("                        </body>\n");
+      out.write("                        </html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
