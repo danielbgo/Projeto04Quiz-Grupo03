@@ -16,8 +16,16 @@ public class Bd {
     public static ArrayList<Question> getQuiz(){
         ArrayList<Question> quiz = new ArrayList<>();
         quiz.add(new Question ("5+5?", "10", new String[]{"10","30","15"}));
+        quiz.add(new Question ("2+2?", "4", new String[]{"1","2","4"}));
+        quiz.add(new Question ("5+4?", "9", new String[]{"5","9","10"}));
+        quiz.add(new Question ("5-5?", "0", new String[]{"0","1","2"}));
+        quiz.add(new Question ("30-15?", "15", new String[]{"16","15","17"}));
+        quiz.add(new Question ("22-15?", "7", new String[]{"8","9","7"}));
+        quiz.add(new Question ("5*5?", "25", new String[]{"25","29","20"}));
         quiz.add(new Question ("2*1?", "2", new String[]{"1","2","3"}));
-        quiz.add(new Question ("5*4?", "20", new String[]{"40","25","20"}));
+        quiz.add(new Question ("10*5?", "50", new String[]{"40","50","60"}));
+        quiz.add(new Question ("10/2?", "5", new String[]{"10","8","5"}));
+        
         Collections.shuffle(quiz);
         return quiz;
     }
